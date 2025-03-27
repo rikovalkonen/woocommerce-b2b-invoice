@@ -12,7 +12,6 @@ define('WCB2B_PLUGIN_DIR', plugin_dir_path(__FILE__));
 
 require_once WCB2B_PLUGIN_DIR . 'includes/gateway.php';
 require_once WCB2B_PLUGIN_DIR . 'includes/restrict-gateway.php';
-require_once WCB2B_PLUGIN_DIR . 'includes/checkout-fields.php';
 require_once WCB2B_PLUGIN_DIR . 'includes/order-meta.php';
-require_once WCB2B_PLUGIN_DIR . 'includes/settings-users.php';
+require_once WCB2B_PLUGIN_DIR . 'includes/user-profile-fields.php';
 require_once WCB2B_PLUGIN_DIR . 'includes/settings-behavior.php';

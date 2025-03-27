@@ -1,11 +1,13 @@
 <?php
 // Register submenu for Invoice Behavior
 add_action('admin_menu', function () {
+    add_menu_page('Invoice Settings', 'Invoice Settings', 'manage_woocommerce', 'b2b-invoice-settings', 'b2b_invoice_users_page');
     add_submenu_page('b2b-invoice-settings', 'Invoice Behavior', 'Invoice Behavior', 'manage_woocommerce', 'b2b-invoice-behavior', 'b2b_invoice_behavior_page');
 });
 
 // Page content for selecting order status after invoice payment
-function b2b_invoice_behavior_page() {
+function b2b_invoice_behavior_page()
+{
     if (!current_user_can('manage_woocommerce')) return;
 
     if (isset($_POST['b2b_invoice_order_status'])) {
