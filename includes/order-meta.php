@@ -57,7 +57,7 @@ add_action('woocommerce_checkout_create_order', function ($order, $data) {
 add_action('woocommerce_admin_order_data_after_billing_address', function ($order) {
     $company = $order->get_meta('_invoice_company_details');
     if ($company) {
-        echo '<p><strong>' . __('Yritys', 'woocommerce-b2b-invoice-customers') . ':</strong><br>' . nl2br(esc_html($company)) . '</p>';
+        echo '<p><strong>' . __('Yritys', 'woocommerce-b2b-invoice') . ':</strong><br>' . nl2br(esc_html($company)) . '</p>';
     }
 });
 
@@ -73,13 +73,13 @@ add_filter('woocommerce_email_order_meta_fields', function ($fields, $sent_to_ad
     $reference = $order->get_meta('_invoice_customer_reference');
     if ($reference) {
         $fields['invoice_customer_reference'] = [
-            'label' => __('Viite laskulle', 'woocommerce-b2b-invoice-customers'),
+            'label' => __('Viite laskulle', 'woocommerce-b2b-invoice'),
             'value' => nl2br(esc_html($reference))
         ];
     }
     if ($company) {
         $fields['invoice_company'] = [
-            'label' => __('Yritys', 'woocommerce-b2b-invoice-customers'),
+            'label' => __('Yritys', 'woocommerce-b2b-invoice'),
             'value' => nl2br(esc_html($company))
         ];
     }

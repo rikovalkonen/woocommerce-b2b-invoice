@@ -33,22 +33,22 @@ function b2b_invoice_user_fields($user)
     $companies = get_user_meta($user->ID, 'wc_b2b_ic_invoice_companies', true) ?: [];
 
 ?>
-    <h2><?php echo __('Laskutus asetukset', 'woocommerce-b2b-invoice-customers'); ?></h2>
+    <h2><?php echo __('Laskutus asetukset', 'woocommerce-b2b-invoice'); ?></h2>
     <table class="form-table">
         <tr>
-            <th><label for="can_invoice_order"><?php echo __('Salli maksu laskulla', 'woocommerce-b2b-invoice-customers'); ?></label></th>
+            <th><label for="can_invoice_order"><?php echo __('Salli maksu laskulla', 'woocommerce-b2b-invoice'); ?></label></th>
             <td>
                 <input type="checkbox" name="can_invoice_order" id="can_invoice_order" value="yes" <?php checked($can_invoice, 'yes'); ?> />
             </td>
         </tr>
         <tr>
-            <th><label for="disable_invoice_order"><?php echo __('Poista laskulla maksu väliaikaisesti käytöstä', 'woocommerce-b2b-invoice-customers'); ?></label></th>
+            <th><label for="disable_invoice_order"><?php echo __('Poista laskulla maksu väliaikaisesti käytöstä', 'woocommerce-b2b-invoice'); ?></label></th>
             <td>
                 <input type="checkbox" name="disable_invoice_order" id="disable_invoice_order" value="yes" <?php checked($disable_invoice, 'yes'); ?> />
             </td>
         </tr>
         <tr>
-            <th><?php echo __('Laskutus yritykset', 'woocommerce-b2b-invoice-customers'); ?></th>
+            <th><?php echo __('Laskutus yritykset', 'woocommerce-b2b-invoice'); ?></th>
         </tr>
         <tr>
             <td>
@@ -58,24 +58,24 @@ function b2b_invoice_user_fields($user)
                         <div class="invoice-company" style="margin-bottom: 15px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
                             <div style="display: flex; gap: 1rem; justify-content: space-between;">
                                 <p><strong>Yrityksen nimi:</strong></p>
-                                <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][company_name]" placeholder="<?php echo __('Yrityksen nimi', 'woocommerce-b2b-invoice-customers'); ?>" value="<?php echo esc_attr($company['company_name']); ?>" />
+                                <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][company_name]" placeholder="<?php echo __('Yrityksen nimi', 'woocommerce-b2b-invoice'); ?>" value="<?php echo esc_attr($company['company_name']); ?>" />
                             </div>
                             <div style="display: flex; gap: 1rem; justify-content: space-between;">
                                 <p><strong>Y-tunnus:</strong></p>
-                                <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][y_tunnus]" placeholder="<?php echo __('Y-tunnus', 'woocommerce-b2b-invoice-customers'); ?>" value="<?php echo esc_attr($company['y_tunnus'] ?? ''); ?>" />
+                                <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][y_tunnus]" placeholder="<?php echo __('Y-tunnus', 'woocommerce-b2b-invoice'); ?>" value="<?php echo esc_attr($company['y_tunnus'] ?? ''); ?>" />
                             </div>
                             <div style="display: flex; gap: 1rem; justify-content: space-between;">
                                 <p><strong>Verkkolaskutusosoite:</strong></p>
-                                <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][verkkolaskutusosoite]" placeholder="<?php echo __('Verkkolaskutusosoite', 'woocommerce-b2b-invoice-customers'); ?>" value="<?php echo esc_attr($company['verkkolaskutusosoite'] ?? ''); ?>" />
+                                <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][verkkolaskutusosoite]" placeholder="<?php echo __('Verkkolaskutusosoite', 'woocommerce-b2b-invoice'); ?>" value="<?php echo esc_attr($company['verkkolaskutusosoite'] ?? ''); ?>" />
                             </div>
                             <div style="display: flex; gap: 1rem; justify-content: space-between;">
                                 <p><strong>Välittäjä:</strong></p>
-                                <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][valittaja]" placeholder="<?php echo __('Välittäjä', 'woocommerce-b2b-invoice-customers'); ?>" value="<?php echo esc_attr($company['valittaja'] ?? ''); ?>" />
+                                <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][valittaja]" placeholder="<?php echo __('Välittäjä', 'woocommerce-b2b-invoice'); ?>" value="<?php echo esc_attr($company['valittaja'] ?? ''); ?>" />
                             </div>
                         </div>
                     <?php endforeach; ?>
                 </div>
-                <button type="button" class="button" id="add-invoice-company"><?php echo __('Lisää yritys', 'woocommerce-b2b-invoice-customers'); ?></button>
+                <button type="button" class="button" id="add-invoice-company"><?php echo __('Lisää yritys', 'woocommerce-b2b-invoice'); ?></button>
             </td>
         </tr>
     </table>

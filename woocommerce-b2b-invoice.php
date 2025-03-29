@@ -1,12 +1,12 @@
 <?php
 /*
-Plugin Name: WooCommerce B2B Invoice Customers
+Plugin Name: WooCommerce B2B Invoice
 Description: Adds a custom WooCommerce payment gateway for B2B customers, allowing invoice-based payments with advanced restrictions and user-specific settings.
 Version: 1.0.0
 Author: Riko Valkonen
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
-Text Domain: woocommerce-b2b-invoice-customers
+Text Domain: woocommerce-b2b-invoice
 */
 
 defined('ABSPATH') || exit;
