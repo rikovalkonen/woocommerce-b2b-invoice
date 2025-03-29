@@ -57,19 +57,19 @@ function b2b_invoice_user_fields($user)
                         <?php $y_tunnus = esc_attr($company['y_tunnus'] ?? $key); ?>
                         <div class="invoice-company" style="margin-bottom: 15px; border-bottom: 1px solid #ccc; padding-bottom: 10px;">
                             <div style="display: flex; gap: 1rem; justify-content: space-between;">
-                                <p><strong><?php __('Yrityksen nimi', 'woocommerce-b2b-invoice') ?>:</strong></p>
+                                <p><strong><?php echo __('Yrityksen nimi', 'woocommerce-b2b-invoice') ?>:</strong></p>
                                 <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][company_name]" placeholder="<?php echo __('Yrityksen nimi', 'woocommerce-b2b-invoice'); ?>" value="<?php echo esc_attr($company['company_name']); ?>" />
                             </div>
                             <div style="display: flex; gap: 1rem; justify-content: space-between;">
-                                <p><strong><?php __('Y-tunnus', 'woocommerce-b2b-invoice') ?>:</strong></p>
+                                <p><strong><?php echo __('Y-tunnus', 'woocommerce-b2b-invoice') ?>:</strong></p>
                                 <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][y_tunnus]" placeholder="<?php echo __('Y-tunnus', 'woocommerce-b2b-invoice'); ?>" value="<?php echo esc_attr($company['y_tunnus'] ?? ''); ?>" />
                             </div>
                             <div style="display: flex; gap: 1rem; justify-content: space-between;">
-                                <p><strong><?php __('Verkkolaskutusosoite', 'woocommerce-b2b-invoice') ?>:</strong></p>
+                                <p><strong><?php echo __('Verkkolaskutusosoite', 'woocommerce-b2b-invoice') ?>:</strong></p>
                                 <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][verkkolaskutusosoite]" placeholder="<?php echo __('Verkkolaskutusosoite', 'woocommerce-b2b-invoice'); ?>" value="<?php echo esc_attr($company['verkkolaskutusosoite'] ?? ''); ?>" />
                             </div>
                             <div style="display: flex; gap: 1rem; justify-content: space-between;">
-                                <p><strong><?php __('Välittäjä', 'woocommerce-b2b-invoice') ?>:</strong></p>
+                                <p><strong><?php echo __('Välittäjä', 'woocommerce-b2b-invoice') ?>:</strong></p>
                                 <input type="text" name="invoice_companies[<?php echo $y_tunnus; ?>][valittaja]" placeholder="<?php echo __('Välittäjä', 'woocommerce-b2b-invoice'); ?>" value="<?php echo esc_attr($company['valittaja'] ?? ''); ?>" />
                             </div>
                         </div>
