@@ -1,6 +1,6 @@
 # WooCommerce B2B Invoice Gateway
 
-Custom payment gateway for WooCommerce that allows approved business customers to pay by invoice. Ideal for B2B e-commerce shops that need to offer invoicing to specific users or companies.
+Custom payment gateway for WooCommerce that allows approved business customers to pay by invoice. Ideal for e-commerce shops that need to offer invoicing to specific users or companies.
 
 ---
 
@@ -52,7 +52,7 @@ Example structure for `wc_b2b_ic_invoice_companies`:
         'company_name' => 'Acme Oy',
         'y_tunnus' => '1234567-8',
         'verkkolaskutusosoite' => '003712345678',
-        'valittaja' => '003721291126'
+        'valittaja' => 'Apix (003723327487)'
     ]
 ]
 ```
