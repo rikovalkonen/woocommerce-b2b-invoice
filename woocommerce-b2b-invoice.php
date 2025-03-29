@@ -7,6 +7,7 @@ Author: Riko Valkonen
 License: GPL-2.0+
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: woocommerce-b2b-invoice
+Requires Plugins: woocommerce
 */
 
 defined('ABSPATH') || exit;
