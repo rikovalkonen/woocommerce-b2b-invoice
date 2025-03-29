@@ -66,6 +66,10 @@ function init_b2b_invoice_gateway()
             $chosen_methods = WC()->session->get('chosen_shipping_methods');
             $chosen_method  = is_array($chosen_methods) ? current($chosen_methods) : '';
 
+            if (empty($this->allowed_shipping_methods)) {
+                return parent::is_available();
+            }
+
             if (!in_array($chosen_method, $this->allowed_shipping_methods)) {
                 return false;
             }
