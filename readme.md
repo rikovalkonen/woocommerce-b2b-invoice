@@ -56,3 +56,22 @@ Example structure for `wc_b2b_ic_invoice_companies`:
     ]
 ]
 ```
+
+## 🤝 Contributing
+
+Contributions are welcome and appreciated! ❤️
+
+If you'd like to help improve this plugin:
+
+1. Fork the repository
+2. Create a new branch for your feature or fix
+3. Make your changes with clear, descriptive commits
+4. Submit a pull request (PR)
+
+Whether it's a bug fix, feature suggestion, or documentation improvement — all help is welcome!
+
+---
+
+## 📬 Questions?
+
+Feel free to [open an issue](https://github.com/rikovalkonen/woocommerce-b2b-invoice/issues) or contact [@rikovalkonen](https://github.com/rikovalkonen) on GitHub.
