@@ -36,6 +36,7 @@ function init_b2b_invoice_gateway()
     class WC_Gateway_B2B_Invoice extends WC_Payment_Gateway
     {
         private $allowed_shipping_methods;
+        private $default_order_status;
 
         public function __construct()
         {
@@ -51,6 +52,7 @@ function init_b2b_invoice_gateway()
             $this->enabled = $this->get_option('enabled');
             $this->title = $this->get_option('title');
             $this->allowed_shipping_methods = $this->get_option('allowed_shipping_methods', []);
+            $this->default_order_status = $this->get_option('default_order_status', 'on-hold');
 
             add_action('woocommerce_update_options_payment_gateways_' . $this->id, [$this, 'process_admin_options']);
         }
@@ -105,6 +107,13 @@ function init_b2b_invoice_gateway()
                     'options'     => $this->get_shipping_zones_and_methods_for_select(),
                     'class'       => 'wc-enhanced-select',
                     'default'     => []
+                ),
+                'default_order_status' => array(
+                    'title'       => __('Default Order Status', 'woocommerce-b2b-invoice'),
+                    'type'        => 'select',
+                    'description' => __('Choose the order status to apply when an invoice is used.', 'woocommerce-b2b-invoice'),
+                    'default'     => 'on-hold',
+                    'options'     => $this->get_all_order_statuses(),
                 )
             );
         }
@@ -129,7 +138,7 @@ function init_b2b_invoice_gateway()
                 ];
             }
 
-            $status = get_option('b2b_invoice_order_status', 'on-hold');
+            $status = $this->default_order_status ?: 'on-hold';
             $order->update_status($status, 'Invoice payment method selected');
 
             wc_reduce_stock_levels($order_id);
@@ -191,6 +200,18 @@ function init_b2b_invoice_gateway()
             return $options;
         }
 
+        private function get_all_order_statuses()
+        {
+            $statuses = wc_get_order_statuses();
+            $cleaned  = [];
+
+            foreach ($statuses as $status_key => $label) {
+                $cleaned_key = str_replace('wc-', '', $status_key);
+                $cleaned[$cleaned_key] = $label;
+            }
+
+            return $cleaned;
+        }
 
         public function payment_fields()
         {
