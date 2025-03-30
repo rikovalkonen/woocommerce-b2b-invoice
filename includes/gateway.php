@@ -173,6 +173,16 @@ function init_b2b_invoice_gateway()
                 return false;
             }
 
+            if (empty($_POST['invoice_customer_reference']) || trim($_POST['invoice_customer_reference']) === '') {
+                wc_add_notice(__('Please enter a reference for the invoice.', 'woocommerce-b2b-invoice'), 'error');
+                return false;
+            }
+
+            if (empty($_POST['selected_invoice_company'])) {
+                wc_add_notice(__('Please select a company for invoice payment.', 'woocommerce-b2b-invoice'), 'error');
+                return false;
+            }
+
             return true;
         }
 
