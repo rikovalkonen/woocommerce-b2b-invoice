@@ -65,6 +65,13 @@ function init_b2b_invoice_gateway()
             if (is_admin() || !WC()->cart->needs_shipping()) {
                 return parent::is_available();
             }
+            $user_id = get_current_user_id();
+            if ($user_id) {
+                $allowed = get_user_meta($user_id, 'wc_b2b_ic_can_invoice_order', true) === 'yes';
+                if (!$allowed) {
+                    return false;
+                }
+            }
             $chosen_methods = WC()->session->get('chosen_shipping_methods');
             $chosen_method  = is_array($chosen_methods) ? current($chosen_methods) : '';
 
