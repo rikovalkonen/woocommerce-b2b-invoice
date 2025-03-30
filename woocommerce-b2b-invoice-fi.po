@@ -1,0 +1,180 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce B2B Invoice\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-30 10:25+0000\n"
+"PO-Revision-Date: 2025-03-30 10:37+0000\n"
+"Last-Translator: Admin\n"
+"Language-Team: Finnish\n"
+"Language: fi\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.7.1; wp-6.7.2\n"
+"X-Domain: woocommerce-b2b-invoice"
+
+#: includes/user-profile-fields.php:83
+msgid "Add"
+msgstr "Lisää"
+
+#. Description of the plugin
+msgid ""
+"Adds a custom WooCommerce payment gateway for B2B customers, allowing "
+"invoice-based payments with advanced restrictions and user-specific settings."
+msgstr ""
+"Lisää WooCommerceen mukautetun maksutavan yritysasiakkaille, mahdollistaen "
+"laskulla maksamisen kehittyneillä rajoituksilla ja käyttäjäkohtaisilla "
+"asetuksilla."
+
+#: includes/user-profile-fields.php:43
+msgid "Allow pay by invoice"
+msgstr "Salli maksaminen laskulla"
+
+#: includes/gateway.php:104
+msgid "Allowed Shipping Methods"
+msgstr "Sallitut toimitustavat"
+
+#: includes/gateway.php:95
+msgid "Bill to company"
+msgstr "Lasku yritykselle"
+
+#: includes/user-profile-fields.php:68 includes/user-profile-fields.php:69
+#: includes/order-meta.php:68 includes/order-meta.php:109
+msgid "Business ID"
+msgstr "Y-tunnus"
+
+#: includes/gateway.php:106
+msgid "Choose shipping methods allowed when using this gateway."
+msgstr "Valitse sallitut toimitustavat, kun käytät tätä yhdyskäytävää."
+
+#: includes/gateway.php:114
+msgid "Choose the order status to apply when an invoice is used."
+msgstr "Valitse tilauksen tila, joka asetetaan maksun jälkeen."
+
+#: includes/user-profile-fields.php:55
+msgid "Companies"
+msgstr "Yritykset"
+
+#: includes/gateway.php:237
+msgid "Company"
+msgstr "Yritys"
+
+#: includes/user-profile-fields.php:64 includes/user-profile-fields.php:65
+#: includes/order-meta.php:65 includes/order-meta.php:103
+msgid "Company name"
+msgstr "Yrityksen nimi"
+
+#: includes/gateway.php:112
+msgid "Default Order Status"
+msgstr "Tilauksen oletustila"
+
+#: includes/user-profile-fields.php:79
+msgid "Delete"
+msgstr "Poista"
+
+#: includes/gateway.php:98
+msgid "Description"
+msgstr "Kuvaus"
+
+#: includes/user-profile-fields.php:72 includes/user-profile-fields.php:73
+#: includes/order-meta.php:71 includes/order-meta.php:115
+#: includes/gateway.php:247
+msgid "E-invoice address"
+msgstr "Verkkolaskuosoite"
+
+#: includes/gateway.php:87
+msgid "Enable Invoice Payment"
+msgstr "Ota laskumaksu käyttöön"
+
+#: includes/gateway.php:86
+msgid "Enable/Disable"
+msgstr "Ota käyttöön / Poista käytöstä"
+
+#: includes/user-profile-fields.php:76 includes/user-profile-fields.php:77
+#: includes/order-meta.php:74 includes/order-meta.php:121
+#: includes/gateway.php:248
+msgid "Intermediary"
+msgstr "Välittäjä"
+
+#: includes/gateway.php:165 includes/gateway.php:225
+msgid ""
+"Invoice payment has been temporarily disabled on your account. Please "
+"contact customer service."
+msgstr ""
+"Laskulla maksaminen on tilapäisesti poistettu käytöstä tililtäsi. Ota "
+"yhteyttä asiakaspalveluun.\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+"\n"
+
+#: includes/order-meta.php:97
+msgid "Invoice reference"
+msgstr "Laskun viite"
+
+#: includes/user-profile-fields.php:40
+msgid "Invoice settings"
+msgstr "Laskuasetukset"
+
+#: includes/gateway.php:231
+msgid ""
+"No billing companies were found in your account, please contact customer "
+"service."
+msgstr ""
+"Tililtäsi ei löytynyt laskutusyrityksiä. Otathan yhteyttä asiakaspalveluun.\n"
+"\n"
+
+#: includes/gateway.php:101
+msgid ""
+"Pay easily by e-invoice. The invoice will be sent to your billing address"
+msgstr ""
+"Maksa vaivattomasti verkkolaskulla – lasku toimitetaan laskutusosoitteeseesi."
+
+#: includes/gateway.php:133
+msgid "Payment by invoice is not allowed on your account."
+msgstr "Tililläsi ei ole oikeutta maksaa laskulla."
+
+#: includes/order-meta.php:81 includes/gateway.php:234
+msgid "Reference"
+msgstr "Viite"
+
+#. Author of the plugin
+msgid "Riko Valkonen"
+msgstr "Riko Valkonen"
+
+#: includes/gateway.php:235
+msgid "Select company"
+msgstr "Valitse yritys"
+
+#: includes/user-profile-fields.php:49
+msgid "Temporarily disable invoice payment"
+msgstr "Poista laskulla maksaminen tilapäisesti käytöstä"
+
+#: includes/gateway.php:100
+msgid "This controls the description which the user sees during checkout."
+msgstr "Tämä teksti näkyy käyttäjälle maksutavan valinnan yhteydessä kassalla."
+
+#: includes/gateway.php:94
+msgid "This controls the title which the user sees during checkout."
+msgstr "Tämä otsikko näytetään käyttäjälle kassalla maksutapaa valittaessa."
+
+#: includes/gateway.php:92
+msgid "Title"
+msgstr "Otsikko"
+
+#. Name of the plugin
+msgid "WooCommerce B2B Invoice"
+msgstr "WooCommerce B2B Lasku"
+
+#: includes/gateway.php:160
+msgid ""
+"You are currently unable to use bill pay. Please contact customer service."
+msgstr ""
+"Laskulla maksaminen ei ole tällä hetkellä käytettävissä. Ole hyvä ja ota "
+"yhteyttä asiakaspalveluun."
