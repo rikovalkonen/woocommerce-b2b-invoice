@@ -1,0 +1,163 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: WooCommerce B2B Invoice\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-03-30 10:33+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: \n"
+"Language: \n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Loco https://localise.biz/\n"
+"X-Loco-Version: 2.7.1; wp-6.7.2\n"
+"X-Domain: woocommerce-b2b-invoice"
+
+#: includes/user-profile-fields.php:83
+msgid "Add"
+msgstr ""
+
+#. Description of the plugin
+msgid ""
+"Adds a custom WooCommerce payment gateway for B2B customers, allowing "
+"invoice-based payments with advanced restrictions and user-specific settings."
+msgstr ""
+
+#: includes/user-profile-fields.php:43
+msgid "Allow pay by invoice"
+msgstr ""
+
+#: includes/gateway.php:104
+msgid "Allowed Shipping Methods"
+msgstr ""
+
+#: includes/gateway.php:95
+msgid "Bill to company"
+msgstr ""
+
+#: includes/user-profile-fields.php:68 includes/user-profile-fields.php:69
+#: includes/order-meta.php:68 includes/order-meta.php:109
+msgid "Business ID"
+msgstr ""
+
+#: includes/gateway.php:106
+msgid "Choose shipping methods allowed when using this gateway."
+msgstr ""
+
+#: includes/gateway.php:114
+msgid "Choose the order status to apply when an invoice is used."
+msgstr ""
+
+#: includes/user-profile-fields.php:55
+msgid "Companies"
+msgstr ""
+
+#: includes/gateway.php:237
+msgid "Company"
+msgstr ""
+
+#: includes/user-profile-fields.php:64 includes/user-profile-fields.php:65
+#: includes/order-meta.php:65 includes/order-meta.php:103
+msgid "Company name"
+msgstr ""
+
+#: includes/gateway.php:112
+msgid "Default Order Status"
+msgstr ""
+
+#: includes/user-profile-fields.php:79
+msgid "Delete"
+msgstr ""
+
+#: includes/gateway.php:98
+msgid "Description"
+msgstr ""
+
+#: includes/user-profile-fields.php:72 includes/user-profile-fields.php:73
+#: includes/order-meta.php:71 includes/order-meta.php:115
+#: includes/gateway.php:247
+msgid "E-invoice address"
+msgstr ""
+
+#: includes/gateway.php:87
+msgid "Enable Invoice Payment"
+msgstr ""
+
+#: includes/gateway.php:86
+msgid "Enable/Disable"
+msgstr ""
+
+#: includes/user-profile-fields.php:76 includes/user-profile-fields.php:77
+#: includes/order-meta.php:74 includes/order-meta.php:121
+#: includes/gateway.php:248
+msgid "Intermediary"
+msgstr ""
+
+#: includes/gateway.php:165 includes/gateway.php:225
+msgid ""
+"Invoice payment has been temporarily disabled on your account. Please "
+"contact customer service."
+msgstr ""
+
+#: includes/order-meta.php:97
+msgid "Invoice reference"
+msgstr ""
+
+#: includes/user-profile-fields.php:40
+msgid "Invoice settings"
+msgstr ""
+
+#: includes/gateway.php:231
+msgid ""
+"No billing companies were found in your account, please contact customer "
+"service."
+msgstr ""
+
+#: includes/gateway.php:101
+msgid ""
+"Pay easily by e-invoice. The invoice will be sent to your billing address"
+msgstr ""
+
+#: includes/gateway.php:133
+msgid "Payment by invoice is not allowed on your account."
+msgstr ""
+
+#: includes/order-meta.php:81 includes/gateway.php:234
+msgid "Reference"
+msgstr ""
+
+#. Author of the plugin
+msgid "Riko Valkonen"
+msgstr ""
+
+#: includes/gateway.php:235
+msgid "Select company"
+msgstr ""
+
+#: includes/user-profile-fields.php:49
+msgid "Temporarily disable invoice payment"
+msgstr ""
+
+#: includes/gateway.php:100
+msgid "This controls the description which the user sees during checkout."
+msgstr ""
+
+#: includes/gateway.php:94
+msgid "This controls the title which the user sees during checkout."
+msgstr ""
+
+#: includes/gateway.php:92
+msgid "Title"
+msgstr ""
+
+#. Name of the plugin
+msgid "WooCommerce B2B Invoice"
+msgstr ""
+
+#: includes/gateway.php:160
+msgid ""
+"You are currently unable to use bill pay. Please contact customer service."
+msgstr ""

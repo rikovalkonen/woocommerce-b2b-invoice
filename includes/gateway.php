@@ -92,13 +92,13 @@ function init_b2b_invoice_gateway()
                     'title'       => __('Title', 'woocommerce-b2b-invoice'),
                     'type'        => 'text',
                     'description' => __('This controls the title which the user sees during checkout.', 'woocommerce-b2b-invoice'),
-                    'default'     => __('Lasku yritykselle', 'woocommerce-b2b-invoice')
+                    'default'     => __('Bill to company', 'woocommerce-b2b-invoice')
                 ),
                 'description' => array(
                     'title'       => __('Description', 'woocommerce-b2b-invoice'),
                     'type'        => 'textarea',
                     'description' => __('This controls the description which the user sees during checkout.', 'woocommerce-b2b-invoice'),
-                    'default'     => __("Maksa kätevästi verkkolaskulla", 'woocommerce-b2b-invoice')
+                    'default'     => __("Pay easily by e-invoice. The invoice will be sent to your billing address", 'woocommerce-b2b-invoice')
                 ),
                 'allowed_shipping_methods' => array(
                     'title'       => __('Allowed Shipping Methods', 'woocommerce-b2b-invoice'),
@@ -130,7 +130,7 @@ function init_b2b_invoice_gateway()
                 $order->add_order_note('Invoice payment was attempted, but user is not eligible.');
                 $order->update_status('failed', 'Invoice payment not allowed for this user.');
 
-                wc_add_notice(__('Laskulla maksaminen ei ole sallittua tililläsi.', 'woocommerce-b2b-invoice'), 'error');
+                wc_add_notice(__('Payment by invoice is not allowed on your account.', 'woocommerce-b2b-invoice'), 'error');
 
                 return [
                     'result' => 'failure',
@@ -157,12 +157,12 @@ function init_b2b_invoice_gateway()
             $disabled = get_user_meta($user_id, 'wc_b2b_ic_disable_invoice_order', true) === 'yes';
 
             if (!$allowed) {
-                wc_add_notice(__('Et voi tällä hetkellä käyttää laskujen maksamista. Ota yhteyttä asiakaspalveluun.', 'woocommerce-b2b-invoice'), 'error');
+                wc_add_notice(__('You are currently unable to use bill pay. Please contact customer service.', 'woocommerce-b2b-invoice'), 'error');
                 return false;
             }
 
             if ($disabled) {
-                wc_add_notice(__('Laskulla maksu on tilapäisesti poistettu käytöstä tililläsi. Ota yhteyttä asiakaspalveluun.', 'woocommerce-b2b-invoice'), 'error');
+                wc_add_notice(__('Invoice payment has been temporarily disabled on your account. Please contact customer service.', 'woocommerce-b2b-invoice'), 'error');
                 return false;
             }
 
@@ -222,30 +222,30 @@ function init_b2b_invoice_gateway()
             $disabled = get_user_meta($user_id, 'wc_b2b_ic_disable_invoice_order', true) === 'yes';
 
             if ($allowed && $disabled) {
-                echo '<div class="woocommerce-info">' . esc_attr__('Laskulla maksu on tilapäisesti poistettu käytöstä tililläsi. Ota yhteyttä asiakaspalveluun.', 'woocommerce-b2b-invoice') . '</div>';
+                echo '<div class="woocommerce-info">' . esc_attr__('Invoice payment has been temporarily disabled on your account. Please contact customer service.', 'woocommerce-b2b-invoice') . '</div>';
                 return;
             }
 
             $companies = get_user_meta($user_id, 'wc_b2b_ic_invoice_companies', true);
             if (empty($companies)) {
-                echo '<div class="woocommerce-info">' . esc_attr__('Tililtäsi ei löytynyt laskutusyrityksiä, ota yhteyttä asiakaspalveluun.', 'woocommerce-b2b-invoice') . '</div>';
+                echo '<div class="woocommerce-info">' . esc_attr__('No billing companies were found in your account, please contact customer service.', 'woocommerce-b2b-invoice') . '</div>';
                 return;
             }
-            echo '<input type="text" name="invoice_customer_reference" id="customer_reference" class="input-text" style="width:100%;" placeholder="' . esc_attr__('Viite laskulle', 'woocommerce-b2b-invoice') . '" /></p>';
-            echo '<p><strong>' . esc_attr__('Valitse yritys', 'woocommerce-b2b-invoice') . ':</strong></p>';
+            echo '<input type="text" name="invoice_customer_reference" id="customer_reference" class="input-text" style="width:100%;" placeholder="' . esc_attr__('Reference', 'woocommerce-b2b-invoice') . '" /></p>';
+            echo '<p><strong>' . esc_attr__('Select company', 'woocommerce-b2b-invoice') . ':</strong></p>';
             echo '<select name="selected_invoice_company" id="selected_invoice_company" class="woocommerce-select" style="width:100%;">';
-            echo '<option disabled selected value="">' . esc_attr__('Yritys', 'woocommerce-b2b-invoice') . '</option>';
+            echo '<option disabled selected value="">' . esc_attr__('Company', 'woocommerce-b2b-invoice') . '</option>';
             foreach ($companies as $index => $company) {
-                $label = esc_html($company['company_name'] . ' - ' . $company['y_tunnus']);
-                echo "<option value=\"" . $company['y_tunnus'] . "\" 
-                    data-verkkolaskutusosoite=\"" . esc_attr($company['verkkolaskutusosoite']) . "\" 
-                    data-valittaja=\"" . esc_attr($company['valittaja']) . "\">{$label}</option>";
+                $label = esc_html($company['company_name'] . ' - ' . $company['business_id']);
+                echo "<option value=\"" . $company['business_id'] . "\" 
+                    data-einvoiceaddress=\"" . esc_attr($company['e_invoice_address']) . "\" 
+                    data-intermediary=\"" . esc_attr($company['intermediary']) . "\">{$label}</option>";
             }
             echo '</select>';
 
             echo '<div id="invoice-details" style="margin-top: 1em; display:none;">';
-            echo '<p><strong>' . esc_attr__('Verkkolaskutusosoite', 'woocommerce-b2b-invoice') . ':</strong> <span id="verkkolaskutusosoite"></span></p>';
-            echo '<p><strong>' . esc_attr__('Välittäjä', 'woocommerce-b2b-invoice') . ':</strong> <span id="valittaja"></span></p>';
+            echo '<p><strong>' . esc_attr__('E-invoice address', 'woocommerce-b2b-invoice') . ':</strong> <span id="e-invoice-address"></span></p>';
+            echo '<p><strong>' . esc_attr__('Intermediary', 'woocommerce-b2b-invoice') . ':</strong> <span id="intermediary"></span></p>';
             echo '</div>';
 
 ?>
@@ -253,12 +253,12 @@ function init_b2b_invoice_gateway()
                 jQuery(document).ready(function($) {
                     $('#selected_invoice_company').on('change', function() {
                         const selected = this.options[this.selectedIndex];
-                        const verkkolasku = selected.dataset.verkkolaskutusosoite || '';
-                        const val = selected.dataset.valittaja || '';
+                        const e_invoice_address = selected.dataset.einvoiceaddress || '';
+                        const intermediary = selected.dataset.intermediary || '';
 
-                        if (verkkolasku && val) {
-                            $('#verkkolaskutusosoite').text(verkkolasku);
-                            $('#valittaja').text(val);
+                        if (e_invoice_address && intermediary) {
+                            $('#e-invoice-address').text(e_invoice_address);
+                            $('#intermediary').text(intermediary);
                             $('#invoice-details').show();
                         } else {
                             $('#invoice-details').hide();

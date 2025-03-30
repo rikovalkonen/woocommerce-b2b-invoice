@@ -33,19 +33,18 @@ add_action('woocommerce_checkout_create_order', function ($order, $data) {
 
     if ($selected_index !== null && isset($companies[$selected_index])) {
         $company = $companies[$selected_index];
-        $display = $company['company_name'] . "\nVAT: " . $company['y_tunnus'] . "\n" .
-            "Verkkolaskutusosoite: " . $company['verkkolaskutusosoite'] . "\n" .
-            "Välittäjä: " . $company['valittaja'] . "\n" .
-            "Viite: " . $reference;
 
-        if ($display) {
-            $order->update_meta_data('_invoice_company_details', $display);
+        if ($company) {
+            $order->update_meta_data('_wc_b2b_ic_invoice_company_name', $company['company_name']);
+            $order->update_meta_data('_wc_b2b_ic_invoice_company_id', $company['business_id']);
+            $order->update_meta_data('_wc_b2b_ic_invoice_company_einvoice_address', $company['e_invoice_address']);
+            $order->update_meta_data('_wc_b2b_ic_invoice_company_intermediary', $company['intermediary']);
             $meta_updated = true;
         }
     }
 
     if ($reference) {
-        $order->update_meta_data('_invoice_customer_reference', $reference);
+        $order->update_meta_data('_wc_b2b_ic_invoice_customer_reference', $reference);
         $meta_updated = true;
     }
 
@@ -55,32 +54,70 @@ add_action('woocommerce_checkout_create_order', function ($order, $data) {
 }, 10, 2);
 
 add_action('woocommerce_admin_order_data_after_billing_address', function ($order) {
-    $company = $order->get_meta('_invoice_company_details');
-    if ($company) {
-        echo '<p><strong>' . __('Yritys', 'woocommerce-b2b-invoice') . ':</strong><br>' . nl2br(esc_html($company)) . '</p>';
+    $company_name = $order->get_meta('_wc_b2b_ic_invoice_company_name');
+    $company_id = $order->get_meta('_wc_b2b_ic_invoice_company_id');
+    $einvoice_address = $order->get_meta('_wc_b2b_ic_invoice_company_einvoice_address');
+    $intermediary = $order->get_meta('_wc_b2b_ic_invoice_company_intermediary');
+
+    if ($company_name) {
+        echo '<p><strong>' . __('Company name', 'woocommerce-b2b-invoice') . ':</strong><br>' . esc_html($company_name) . '</p>';
+    }
+    if ($company_id) {
+        echo '<p><strong>' . __('Business ID', 'woocommerce-b2b-invoice') . ':</strong><br>' . esc_html($company_id) . '</p>';
+    }
+    if ($einvoice_address) {
+        echo '<p><strong>' . __('E-invoice address', 'woocommerce-b2b-invoice') . ':</strong><br>' . esc_html($einvoice_address) . '</p>';
+    }
+    if ($intermediary) {
+        echo '<p><strong>' . __('Intermediary', 'woocommerce-b2b-invoice') . ':</strong><br>' . esc_html($intermediary) . '</p>';
     }
 });
 
 add_action('woocommerce_admin_order_data_after_billing_address', function ($order) {
-    $reference = $order->get_meta('_invoice_customer_reference');
+    $reference = $order->get_meta('_wc_b2b_ic_invoice_customer_reference');
     if ($reference) {
-        echo '<p><strong>Viite laskulle:</strong><br>' . nl2br(esc_html($reference)) . '</p>';
+        echo '<p><strong>' . __('Reference', 'woocommerce-b2b-invoice') . ':</strong><br>' . esc_html($reference) . '</p>';
     }
 });
 
 add_filter('woocommerce_email_order_meta_fields', function ($fields, $sent_to_admin, $order) {
-    $company = $order->get_meta('_invoice_company_details');
-    $reference = $order->get_meta('_invoice_customer_reference');
+    $disable_invoice_fields = apply_filters('wc_b2b_disable_invoice_fields', false, $order, $sent_to_admin);
+    if ($disable_invoice_fields) {
+        return $fields;
+    }
+    $company_name = $order->get_meta('_wc_b2b_ic_invoice_company_name');
+    $company_id = $order->get_meta('_wc_b2b_ic_invoice_company_id');
+    $einvoice_address = $order->get_meta('_wc_b2b_ic_invoice_company_einvoice_address');
+    $intermediary = $order->get_meta('_wc_b2b_ic_invoice_company_intermediary');
+    $reference = $order->get_meta('_wc_b2b_ic_invoice_customer_reference');
     if ($reference) {
         $fields['invoice_customer_reference'] = [
-            'label' => __('Viite laskulle', 'woocommerce-b2b-invoice'),
-            'value' => nl2br(esc_html($reference))
+            'label' => __('Invoice reference', 'woocommerce-b2b-invoice'),
+            'value' => esc_html($reference)
         ];
     }
-    if ($company) {
-        $fields['invoice_company'] = [
-            'label' => __('Yritys', 'woocommerce-b2b-invoice'),
-            'value' => nl2br(esc_html($company))
+    if ($company_name) {
+        $fields['invoice_company_name'] = [
+            'label' => __('Company name', 'woocommerce-b2b-invoice'),
+            'value' => esc_html($company_name)
+        ];
+    }
+    if ($company_id) {
+        $fields['invoice_company_id'] = [
+            'label' => __('Business ID', 'woocommerce-b2b-invoice'),
+            'value' => esc_html($company_id)
+        ];
+    }
+    if ($einvoice_address) {
+        $fields['invoice_company_einvoice_address'] = [
+            'label' => __('E-invoice address', 'woocommerce-b2b-invoice'),
+            'value' => esc_html($einvoice_address)
+        ];
+    }
+    if ($intermediary) {
+        $fields['invoice_company_intermediary'] = [
+            'label' => __('Intermediary', 'woocommerce-b2b-invoice'),
+            'value' => esc_html($intermediary)
         ];
     }
     return $fields;
