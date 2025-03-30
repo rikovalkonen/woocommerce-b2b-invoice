@@ -50,7 +50,7 @@ Example structure for `wc_b2b_ic_invoice_companies`:
 [
     [
         'company_name' => 'Acme Oy',
-        'y_tunnus' => '1234567-8',
+        'business_id' => '1234567-8',
         'e_invoice_address' => '003712345678',
         'intermediary' => 'Apix (003723327487)'
     ]
